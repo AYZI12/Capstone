@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room 404 Dashboard | PHINMA UPang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="header-left">
+                <img src="assets/logo.png" alt="PHINMA Logo" class="header-logo">
+                <div class="header-titles">
+                    <h1>PHINMA University of Pangasinan</h1>
+                    <p>Smart Classroom Monitoring System</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-time" id="current-time">00:00:00 AM</div>
+                <div class="header-date" id="current-date">January 01, 2026</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <a href="monitor.html" class="back-btn">← Back to Rooms</a>
+            </div>
+            <div class="topbar-right"></div>
+        </div>
+        <main class="content-area">
+            <div class="dashboard-grid">
+                <!-- Main Occupancy Card -->
+                <div class="occupancy-card">
+                    <div class="occupancy-label">PIR Sensor: Current Occupancy</div>
+                    <div class="occupancy-value">
+                        45<span class="occupancy-total">/50</span>
+                    </div>
+                    <div class="status-badge">Near Capacity</div>
+                </div>
+
+                <!-- Sensor Readings Grid -->
+                <div class="sensor-grid">
+                    <!-- Temperature -->
+                    <div class="sensor-card">
+                        <div class="sensor-value">24.5°C</div>
+                        <div class="sensor-label">Temperature</div>
+                        <div class="sensor-id">DHT11MODULE</div>
+                    </div>
+
+                    <!-- Humidity -->
+                    <div class="sensor-card">
+                        <div class="sensor-value">58%</div>
+                        <div class="sensor-label">Humidity</div>
+                        <div class="sensor-id">DHT11MODULE</div>
+                    </div>
+
+                    <!-- Air Quality -->
+                    <div class="sensor-card">
+                        <div class="sensor-value">92 AQI</div>
+                        <div class="sensor-label">Air Quality</div>
+                        <div class="sensor-id">MQ135 SENSOR</div>
+                    </div>
+
+                    <!-- Lighting -->
+                    <div class="sensor-card">
+                        <div class="sensor-value">450 Lx</div>
+                        <div class="sensor-label">Lighting</div>
+                        <div class="sensor-id">LDR PHOTO-RESISTOR</div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeOptions = { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true };
+            const dateOptions = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+            
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>

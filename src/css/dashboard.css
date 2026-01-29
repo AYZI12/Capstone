@@ -1,0 +1,216 @@
+:root { 
+    --school-green: #1b4332; 
+    --school-gold: #f1c40f; 
+    --paper-white: #ffffff; 
+    --desk-gray: #f2f4f7; 
+    --border-ink: #e2e8f0; 
+    --text-gray: #64748b;
+    --text-dark: #1e293b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { 
+    background: var(--desk-gray); 
+    min-height: 100vh; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    background: var(--paper-white);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.app-header {
+    background: var(--paper-white);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 6px solid var(--school-gold);
+}
+.header-left { display: flex; align-items: center; gap: 15px; }
+.header-logo { height: 60px; width: auto; }
+.header-titles h1 { color: var(--school-green); font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
+.header-titles p { color: var(--text-gray); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+.header-right { text-align: right; }
+.header-time { color: var(--text-dark); font-size: 1.25rem; font-weight: 800; }
+.header-date { color: var(--text-gray); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; }
+
+/* Topbar under header */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px 0 40px;
+}
+.topbar-left {}
+.topbar-right { display: flex; align-items: center; }
+
+.back-btn {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+    padding: 8px 12px;
+    border: 1px solid var(--border-ink);
+    border-radius: 10px;
+    background: var(--paper-white);
+}
+.back-btn:hover { color: var(--school-green); }
+
+/* Logout dropdown */
+.logout-dropdown { position: relative; }
+.logout-toggle {
+    background: #dc2626; /* red */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.logout-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 8px;
+    background: var(--paper-white);
+    border: 1px solid var(--border-ink);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    display: none;
+    min-width: 160px;
+    padding: 8px;
+}
+.logout-menu.open { display: block; }
+.logout-item {
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 700;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+.logout-item:hover { background: #fee2e2; }
+
+/* Content area */
+.content-area {
+    padding: 24px 40px 40px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Dashboard Specific Styles */
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Occupancy Card (Large Green) */
+.occupancy-card {
+    background: #1b4332; /* Deep Green */
+    color: white;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(27, 67, 50, 0.2);
+}
+
+.occupancy-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    opacity: 0.9;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.occupancy-value {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.occupancy-total {
+    font-size: 2.5rem;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.status-badge {
+    background: #f1c40f; /* Gold */
+    color: #1b4332;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Sensor Grid */
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.sensor-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.sensor-card:hover {
+    transform: translateY(-2px);
+    border-color: #cbd5e1;
+}
+
+.sensor-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.sensor-label {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.sensor-id {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

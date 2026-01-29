@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | PHINMA UPang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <img src="assets/logo.png" alt="PHINMA Logo" class="header-logo">
+            <div class="header-titles">
+                <h1>PHINMA University of Pangasinan</h1>
+                <p>Smart Classroom Monitoring System</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="header-time" id="current-time">00:00:00 AM</div>
+            <div class="header-date" id="current-date">January 01, 2026</div>
+        </div>
+    </header>
+    <div id="setup-card">
+        <img src="assets/logo.png" alt="PHINMA Logo" class="logo-img">
+        <div class="form-header">
+            <h2>PHINMA</h2>
+            <h2>University of Pangasinan</h2>
+            <p style="font-size: 0.8rem; color: #64748b; margin-top: 5px;">Smart Classroom Monitoring System</p>
+        </div>
+        
+        <div class="input-group">
+            <label>Assigned Faculty</label>
+            <input type="text" id="in-faculty" placeholder="e.g. Prof. Bustillo, N.">
+        </div>
+        <div class="input-group">
+            <label>Course & Section</label>
+            <input type="text" id="in-course" placeholder="e.g. BSIT3-CS-01">
+        </div>
+        <div class="input-group">
+            <label>Time Schedule</label>
+            <input type="text" id="in-time" placeholder="e.g. 1:30 PM - 3:00 PM">
+        </div>
+
+        <button class="btn-start" onclick="saveAndContinue()">PROCEED</button>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeOptions = { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true };
+            const dateOptions = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+        function saveAndContinue() {
+            const faculty = document.getElementById('in-faculty').value;
+            const course = document.getElementById('in-course').value;
+            const time = document.getElementById('in-time').value;
+
+            if(!faculty || !course) { alert("Please input Faculty and Course."); return; }
+
+            localStorage.setItem('faculty', faculty);
+            localStorage.setItem('course', course);
+            localStorage.setItem('time', time);
+            window.location.href = 'hub.html';
+        }
+    </script>
+</body>
+</html>

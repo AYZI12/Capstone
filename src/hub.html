@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub | PHINMA UPang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/hub.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="header-left">
+                <img src="assets/logo.png" alt="PHINMA Logo" class="header-logo">
+                <div class="header-titles">
+                    <h1>PHINMA University of Pangasinan</h1>
+                    <p>Smart Classroom Monitoring System</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-time" id="current-time">00:00:00 AM</div>
+                <div class="header-date" id="current-date">January 01, 2026</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <a href="index.html" class="back-btn">← Back</a>
+            </div>
+            <div class="topbar-right"></div>
+        </div>
+        <main class="content-area">
+            <h2 class="section-title">Select a Building</h2>
+            
+            <div class="card-grid">
+                <!-- PTC Card - Active -->
+                <a href="monitor.html" class="nav-card active">
+                    <h3>PTC</h3>
+                    <p>Main Building</p>
+                </a>
+
+                <!-- CMA Card - Disabled -->
+                <div class="nav-card disabled">
+                    <h3>CMA</h3>
+                    <p>Coming Soon</p>
+                </div>
+
+                <!-- NH Card - Disabled -->
+                <div class="nav-card disabled">
+                    <h3>NH</h3>
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeOptions = { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true };
+            const dateOptions = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+            
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
