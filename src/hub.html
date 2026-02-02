@@ -26,10 +26,15 @@
 
         <!-- Main Content -->
         <div class="topbar">
-            <div class="topbar-left">
-                <a href="index.html" class="back-btn">← Back</a>
+            <div class="topbar-left"></div>
+            <div class="topbar-right">
+                <div class="logout-dropdown">
+                    <button class="logout-toggle">Logout ▾</button>
+                    <div class="logout-menu">
+                        <a href="index.html" class="logout-item">Log Out</a>
+                    </div>
+                </div>
             </div>
-            <div class="topbar-right"></div>
         </div>
         <main class="content-area">
             <h2 class="section-title">Select a Building</h2>
@@ -68,6 +73,14 @@
         }
         setInterval(updateTime, 1000);
         updateTime();
+        (function () {
+            const dd = document.querySelector('.logout-dropdown');
+            if (!dd) return;
+            const toggle = dd.querySelector('.logout-toggle');
+            const menu = dd.querySelector('.logout-menu');
+            toggle.addEventListener('click', function(e) { e.stopPropagation(); menu.classList.toggle('open'); });
+            document.addEventListener('click', function() { menu.classList.remove('open'); });
+        })();
     </script>
 </body>
 </html>
